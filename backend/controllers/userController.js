@@ -43,7 +43,7 @@ const signupUser = async (req, res) => {
 			{
 				return res.status(400).json({ error: "password atleast of length 8" });
 			}
-		if(password != confirmPassword)
+		if(password !== confirmPassword)
 		{
 			return res.status(400).json({ error: "password and confirm password not matched" });
 		}
