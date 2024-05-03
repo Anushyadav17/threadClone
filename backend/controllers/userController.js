@@ -39,13 +39,13 @@ const signupUser = async (req, res) => {
 		if (user) {
 			return res.status(400).json({ error: "User already exists" });
 		}
-		if(password !== confirmPassword)
+		if(password.length < 8)
+			{
+				return res.status(400).json({ error: "password atleast of length 8" });
+			}
+		if(password != confirmPassword)
 		{
 			return res.status(400).json({ error: "password and confirm password not matched" });
-		}
-		if(password.length < 8)
-		{
-			return res.status(400).json({ error: "password atleast of length 8" });
 		}
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
