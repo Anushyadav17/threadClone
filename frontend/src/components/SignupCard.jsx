@@ -115,6 +115,24 @@ export default function SignupCard() {
 								</InputRightElement>
 							</InputGroup>
 						</FormControl>
+						<FormControl isRequired>
+							<FormLabel>Confirm Password</FormLabel>
+							<InputGroup>
+								<Input
+									type={showPassword ? "text" : "password"}
+									onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+									value={inputs.confirmPassword}
+								/>
+								<InputRightElement h={"full"}>
+									<Button
+										variant={"ghost"}
+										onClick={() => setShowPassword((showPassword) => !showPassword)}
+									>
+										{showPassword ? <ViewIcon /> : <ViewOffIcon />}
+									</Button>
+								</InputRightElement>
+							</InputGroup>
+						</FormControl>
 						<Stack spacing={10} pt={2}>
 							<Button
 								loadingText='Submitting'

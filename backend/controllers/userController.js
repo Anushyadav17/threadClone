@@ -33,11 +33,19 @@ const getUserProfile = async (req, res) => {
 
 const signupUser = async (req, res) => {
 	try {
-		const { name, email, username, password } = req.body;
+		const { name, email, username, password , confirmPassword} = req.body;
 		const user = await User.findOne({ $or: [{ email }, { username }] });
 
 		if (user) {
 			return res.status(400).json({ error: "User already exists" });
+		}
+		if(password !== confirmPassword)
+		{
+			return res.status(400).json({ error: "password and confirm password not matched" });
+		}
+		if(password.length < 8)
+		{
+			return res.status(400).json({ error: "password atleast of length 8" });
 		}
 		const salt = await bcrypt.genSalt(10);
 		const hashedPassword = await bcrypt.hash(password, salt);
