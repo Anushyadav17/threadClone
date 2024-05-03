@@ -120,7 +120,7 @@ export default function SignupCard() {
 							<InputGroup>
 								<Input
 									type={showPassword ? "text" : "password"}
-									onChange={(e) => setInputs({ ...inputs, password: e.target.value })}
+									onChange={(e) => setInputs({ ...inputs, passwordConfirm: e.target.value })}
 									value={inputs.confirmPassword}
 								/>
 								<InputRightElement h={"full"}>
