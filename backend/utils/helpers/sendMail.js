@@ -1,5 +1,7 @@
 import nodemailer from 'nodemailer';
 import dotenv from "dotenv";
+import otpTemplate from "./mailTemplate.js";
+
 dotenv.config();
 
 const mailSender = async (email,title,body) => {
@@ -14,9 +16,9 @@ const mailSender = async (email,title,body) => {
 
         let info = await tansporter.sendMail({
             from : '"Lets Chat Application" <${process.env.MAIL_USER}>',
-            to : email,
-            subject : title,
-            html : body,
+            to : `${email}`,
+            subject : `${title}`,
+            html : `${otpTemplate(123)}`,
         })
         console.log(info);
         return info;
