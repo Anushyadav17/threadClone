@@ -72,7 +72,6 @@ const otpTemplate = (otp) => {
 	
 	<body>
 		<div class="container">
-			<div class="message">Verification Email</div>
 			<div class="body">
 				<p>Dear User,</p>
 				<p>Thank you for registering with LetsChat Application.</p>
